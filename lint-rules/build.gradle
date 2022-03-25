@@ -1,0 +1,29 @@
+plugins {
+    id 'java-library'
+    id 'kotlin'
+    id 'com.android.lint'
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+dependencies {
+
+    // Lint
+    compileOnly "com.android.tools.lint:lint-api:30.1.2"
+    // KtLint
+    compileOnly "com.pinterest.ktlint:ktlint-core:0.45.1"
+
+    // -----> TESTS <----- //
+    testImplementation 'junit:junit:4.13.2'
+    // Lint
+    testImplementation "com.android.tools.lint:lint:30.1.2"
+    testImplementation "com.android.tools.lint:lint-tests:30.1.2"
+    // KtLint
+    // NOTE: With this setup, Android Lint detector unit tests work but KtLint rule unit tests do not
+    testCompileOnly "com.pinterest.ktlint:ktlint-core:0.45.1"
+    testCompileOnly "com.pinterest.ktlint:ktlint-test:0.45.1"
+    // NOTE: With this setup, Android Lint detector unit tests do not work but KtLint rule unit tests do
+//    testImplementation "com.pinterest.ktlint:ktlint-core:0.45.1"
+//    testImplementation "com.pinterest.ktlint:ktlint-test:0.45.1"
+}
